@@ -1,59 +1,287 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# Region Districts Quarters API
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+Laravel 12 asosida qurilgan API - Viloyatlar, Tumanlar va Mahallalarni boshqarish tizimi (filter & sort).
 
-## About Laravel
+## 📋 Texnologiyalar
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+- **Laravel**: 12.x
+- **PHP**: 8.2
+- **Database**: PostgreSQL/MySQL
+- **API Documentation**: Scramble (OpenAPI/Swagger)
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## 🚀 O'rnatish
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+### 1. Repository'ni clone qiling
+```bash
+git clone https://github.com/Khudayberdiyev0022/region_district_quarters.git
+cd region_district_quarters
+```
 
-## Learning Laravel
+### 2. Dependencies'larni o'rnating
+```bash
+composer install
+```
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework. You can also check out [Laravel Learn](https://laravel.com/learn), where you will be guided through building a modern Laravel application.
+### 3. Environment faylini sozlang
+```bash
+cp .env.example .env
+```
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+`.env` faylini tahrirlang va database sozlamalarini kiriting:
+```env
+DB_CONNECTION=pgsql
+DB_HOST=127.0.0.1
+DB_PORT=5432
+DB_DATABASE=your_database_name
+DB_USERNAME=postgres
+DB_PASSWORD=postgres
+```
 
-## Laravel Sponsors
+### 4. Application key generatsiya qiling
+```bash
+php artisan key:generate
+```
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+### 5. Database migration va seeding
+```bash
+php artisan migrate --seed
+```
 
-### Premium Partners
+### 6. Serverni ishga tushiring
+```bash
+php artisan serve
+```
 
-- **[Vehikl](https://vehikl.com)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Redberry](https://redberry.international/laravel-development)**
-- **[Active Logic](https://activelogic.com)**
+API endi mavjud: `http://localhost:8000`
 
-## Contributing
+## 📚 API Endpoints
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+### Regions (Viloyatlar)
 
-## Code of Conduct
+| Method | Endpoint | Tavsif |
+|--------|----------|--------|
+| GET | `/api/regions` | Barcha viloyatlarni olish  |
+| GET | `/api/regions/{id}` | Bitta viloyatni olish |
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+### Districts (Tumanlar)
 
-## Security Vulnerabilities
+| Method | Endpoint | Tavsif |
+|--------|----------|--------|
+| GET | `/api/districts` | Barcha tumanlarni olish |
+| GET | `/api/districts/{id}` | Bitta tumanni olish |
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+### Quarters (Mahallalar)
 
-## License
+| Method | Endpoint | Tavsif |
+|--------|----------|--------|
+| GET | `/api/quarters` | Barcha mahallalarni olish  |
+| GET | `/api/quarters/{id}` | Bitta mahallani olish |
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+## 🌍 Ko'p tillilik (Localization)
+
+API uch tilda nomlarni qo'llab-quvvatlaydi:
+- `uz` - O'zbek tili (Lotin)
+- `oz` - Ўзбек тили (Kirill)
+- `ru` - Русский язык
+
+### Header orqali tilni tanlash
+```bash
+curl -H "Accept-Language: uz" http://localhost:8000/api/regions
+curl -H "Accept-Language: oz" http://localhost:8000/api/regions
+curl -H "Accept-Language: ru" http://localhost:8000/api/regions
+```
+
+Default til: `uz`
+
+## 📖 API Dokumentatsiya
+
+API dokumentatsiyani ko'rish uchun:
+```
+http://localhost:8000/docs/api
+```
+
+Scramble orqali avtomatik generatsiya qilingan interaktiv dokumentatsiya (Swagger UI).
+
+## 📝 Request/Response Misollari
+
+### GET /api/regions
+
+**Request:**
+```bash
+curl -X GET http://localhost:8000/api/regions \
+  -H "Accept: application/json" \
+  -H "Accept-Language: uz"
+```
+
+**Response:**
+```json
+{
+  "success": true,
+  "status": 200,
+  "data": [
+    {
+      "id": 1,
+      "soato_id": "1701",
+      "name": "Toshkent shahri",
+      "order": 1,
+      "district_count": 12,
+      "quarters_count": 115
+    }
+  ],
+  "pagination": {
+    "total": 14,
+    "per_page": 15,
+    "current_page": 1,
+    "last_page": 1,
+    "from": 1,
+    "to": 14,
+    "has_more": false
+  }
+}
+```
+
+### GET /api/regions/{id}
+
+**Request:**
+```bash
+curl -X GET http://localhost:8000/api/regions/1 \
+  -H "Accept: application/json" \
+  -H "Accept-Language: ru"
+```
+
+**Response:**
+```json
+{
+  "success": true,
+  "status": 200,
+  "data": {
+    "id": 1,
+    "soato_id": "1701",
+    "name": "город Ташкент",
+    "order": 1,
+    "district_count": 12,
+    "quarters_count": 115,
+    "districts": [
+      {
+        "id": 1,
+        "name": "Яккасарайский район",
+        "quarters_count": 9
+      }
+    ]
+  }
+}
+```
+
+
+### Error Response
+
+**404 Not Found:**
+```json
+{
+  "success": false,
+  "status": 404,
+  "message": "Resource not found"
+}
+```
+
+**422 Validation Error:**
+```json
+{
+  "success": false,
+  "status": 422,
+  "message": "Validation failed",
+  "errors": {
+    "name_uz": ["The name uz field is required."],
+    "soato_id": ["The soato id field is required."]
+  }
+}
+```
+
+## 🗂️ Database Struktura
+
+### Regions (viloyatlar)
+- `id` - Primary key
+- `soato_id` - SOATO kod
+- `name_uz` - Nom (O'zbek lotin)
+- `name_oz` - Ном (Ўзбек кирилл)
+- `name_ru` - Название (Русский)
+- `order` - Tartiblash uchun
+
+### Districts (tumanlar)
+- `id` - Primary key
+- `region_id` - Foreign key (regions jadvaliga)
+- `soato_id` - SOATO kod
+- `name_uz`, `name_oz`, `name_ru` - Nomlar
+- `order` - Tartiblash uchun
+
+### Quarters (mahallalar)
+- `id` - Primary key
+- `district_id` - Foreign key (districts jadvaliga)
+- `soato_id` - SOATO kod
+- `name_uz`, `name_oz`, `name_ru` - Nomlar
+- `order` - Tartiblash uchun
+
+## 🏗️ Loyiha Strukturasi
+```
+app/
+├── Http/
+│   ├── Controllers/
+│   │   ├── RegionController.php
+│   │   ├── DistrictController.php
+│   │   └── QuarterController.php
+│   ├── Resources/
+│   │   ├── RegionResource.php
+│   │   ├── DistrictResource.php
+│   │   └── QuarterResource.php
+│   └── Middleware/
+│       └── SetLocale.php
+├── Models/
+│   ├── Region.php
+│   ├── District.php
+│   └── Quarter.php
+├── Services/
+│   ├── RegionService.php
+│   ├── DistrictService.php
+│   └── QuarterService.php
+├── Repositories/
+│   ├── RegionRepository.php
+│   ├── DistrictRepository.php
+│   └── QuarterRepository.php
+└── Traits/
+    └── ApiResponse.php
+```
+
+## 🔧 Qo'shimcha Sozlamalar
+
+### Cache'ni tozalash
+```bash
+php artisan optimize:clear
+```
+
+### Database'ni qayta tiklash
+```bash
+php artisan migrate:fresh --seed
+```
+
+### Testing
+```bash
+php artisan test
+```
+
+## 📄 License
+
+Bu loyiha ochiq kodli va [MIT license](LICENSE) ostida tarqatiladi.
+
+## 👨‍💻 Muallif
+
+[khudayberdiyev0022](https://github.com/khudayberdiyev0022)
+
+## 🤝 Hissa qo'shish
+
+Pull request'lar xush kelibsiz! Katta o'zgarishlar uchun avval issue oching.
+
+## 📞 Aloqa
+
+Email: [khamza.khudayberdiyev@gmail.com](mailto:khamza.khudayberdiyev@gmail.com)
+
+GitHub: [Khudayberdiyev0022/region_district_quarters](https://github.com/Khudayberdiyev0022/region_district_quarters)
