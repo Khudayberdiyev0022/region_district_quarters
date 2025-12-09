@@ -3,12 +3,12 @@
 namespace App\Http\Controllers\Api\V1;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\QuarterFilterRequest;
 use App\Http\Resources\QuarterResource;
 use App\Services\QuarterService;
 use App\Traits\ApiResponse;
 use Dedoc\Scramble\Attributes\HeaderParameter;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
-use Illuminate\Http\Request;
 
 class QuarterController extends Controller
 {
@@ -19,16 +19,12 @@ class QuarterController extends Controller
   }
 
   /**
-   * Quarters with relations
+   * Quarters with filter & sort
    */
   #[HeaderParameter('Accept-Language', type: 'string', default: 'uz', example: 'uz,oz,ru')]
-  public function index(Request $request)
+  public function index(QuarterFilterRequest $request)
   {
-    $filters = [
-      'search' => $request->query('search'),
-      'sort'   => $request->query('sort'),
-      'order'  => $request->query('order'),
-    ];
+    $filters = $request->filters();
 
     $districts = $this->service->filter($filters);
 
@@ -36,6 +32,7 @@ class QuarterController extends Controller
       QuarterResource::collection($districts),
     );
   }
+
   /**
    * Quarter with relations
    */

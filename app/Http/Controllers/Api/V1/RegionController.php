@@ -3,12 +3,12 @@
 namespace App\Http\Controllers\Api\V1;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\RegionFilterRequest;
 use App\Http\Resources\RegionResource;
 use App\Services\RegionService;
 use App\Traits\ApiResponse;
 use Dedoc\Scramble\Attributes\HeaderParameter;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
-use Illuminate\Http\Request;
 
 class RegionController extends Controller
 {
@@ -22,13 +22,9 @@ class RegionController extends Controller
    * Regions filter & sort
    */
   #[HeaderParameter('Accept-Language', type: 'string', default: 'uz', example: 'uz,oz,ru')]
-  public function index(Request $request)
+  public function index(RegionFilterRequest $request)
   {
-    $filters = [
-      'search' => $request->query('search'),
-      'sort'   => $request->query('sort'),
-      'order'  => $request->query('order'),
-    ];
+    $filters = $request->filters();
 
     $regions = $this->service->filter($filters);
 

@@ -3,12 +3,12 @@
 namespace App\Http\Controllers\Api\V1;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\DistrictFilterRequest;
 use App\Http\Resources\DistrictResource;
 use App\Services\DistrictService;
 use App\Traits\ApiResponse;
 use Dedoc\Scramble\Attributes\HeaderParameter;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
-use Illuminate\Http\Request;
 
 class DistrictController extends Controller
 {
@@ -21,13 +21,9 @@ class DistrictController extends Controller
    * Districts filter & sort
    */
   #[HeaderParameter('Accept-Language', type: 'string', default: 'uz', example: 'uz,oz,ru')]
-  public function index(Request $request)
+  public function index(DistrictFilterRequest $request)
   {
-    $filters = [
-      'search' => $request->query('search'),
-      'sort'   => $request->query('sort'),
-      'order'  => $request->query('order'),
-    ];
+    $filters = $request->filters();
 
     $districts = $this->service->filter($filters);
 
