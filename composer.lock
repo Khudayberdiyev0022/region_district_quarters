@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "0693fb70d1a9c2ee941b42dd4e2be093",
+    "content-hash": "482d331c3df36e66f5207e05589c24c0",
     "packages": [
         {
             "name": "brick/math",
@@ -1138,6 +1138,71 @@
                 }
             ],
             "time": "2026-07-17T13:53:03+00:00"
+        },
+        {
+            "name": "khudayberdiyev/uzbekistan-regions",
+            "version": "v1.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Khudayberdiyev0022/uzbekistan-regions.git",
+                "reference": "5d648348c4f281a88f458c6801af5275fe2cb9d2"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Khudayberdiyev0022/uzbekistan-regions/zipball/5d648348c4f281a88f458c6801af5275fe2cb9d2",
+                "reference": "5d648348c4f281a88f458c6801af5275fe2cb9d2",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/console": "^11.0 || ^12.0",
+                "illuminate/database": "^11.0 || ^12.0",
+                "illuminate/http": "^11.0 || ^12.0",
+                "illuminate/routing": "^11.0 || ^12.0",
+                "illuminate/support": "^11.0 || ^12.0",
+                "php": "^8.2"
+            },
+            "require-dev": {
+                "orchestra/testbench": "^9.0 || ^10.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Khudayberdiyev\\UzbekistanRegions\\UzbekistanRegionsServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Khudayberdiyev\\UzbekistanRegions\\": "src/",
+                    "Khudayberdiyev\\UzbekistanRegions\\Database\\Seeders\\": "database/seeders/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Khudayberdiyev"
+                }
+            ],
+            "description": "Uzbekistan regions, districts and quarters (SOATO) for Laravel: models, migrations, seeder and a ready-to-use multilingual REST API.",
+            "keywords": [
+                "Uzbekistan",
+                "districts",
+                "laravel",
+                "mahalla",
+                "regions",
+                "soato",
+                "tuman",
+                "viloyat"
+            ],
+            "support": {
+                "issues": "https://github.com/Khudayberdiyev0022/uzbekistan-regions/issues",
+                "source": "https://github.com/Khudayberdiyev0022/uzbekistan-regions/tree/v1.1.0"
+            },
+            "time": "2026-07-21T08:05:05+00:00"
         },
         {
             "name": "laravel/framework",
